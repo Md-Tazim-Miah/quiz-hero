@@ -54,6 +54,7 @@
     >
       <div class="lg:w-[80%] md:w-[90%] w-[90%] mx-auto text-left">
         <!-- Questions start -->
+         <h1 class="mt-10 text-2xl font-bold text-center">Questions</h1>
         <ul class="text-lg my-10">
           <li class="my-4 text-red-600 font-semibold">
             <span class="text-xl bg-orange-200 px-3 py-1 text-black rounded">Question 1:</span> What is the differences among the map, filter, forEach and find array methods? 
@@ -63,20 +64,68 @@
           For Each: forEach() array method executes a provided function once for each array element. It returns undefined. It doesn't mutate the original array, but it can be used to perform operations that mutate an external variables or the elements themselves. It uses when one need to perform a side effect for example logging, modifying an external variable for each element, but don't need a new array. <br><br>
           Find: find() array method returns the first element in the array that satisfies the provided testing function. It returns the first matching element, or undefined if no elements satisfy the condition. It doesn't mutate the original array. It uses when one need to find a single element in an array based on a condition.
           </p>
-          <li class="my-4 text-red-600 font-semibold"></li>
-            <span class="text-xl bg-orange-200 px-3 py-1 text-black rounded">Question 1:</span> What is the differences between the the Local storage and Session storage? 
+          <li class="my-4 text-red-600 font-semibold">
+            <span class="text-xl bg-orange-200 px-3 py-1 text-black rounded">Question 2:</span> What is the differences between the the Local storage and Session storage? 
           </li>
           <p>Local Storage persists even after the browser is closed. Session Storage is cleared when the browser tab or window is closed. <br>
           Local Storage accessible across all tabs and windows from the same origin. Session Storage accessible only within the same tab or window. <br>
           Both typically allow ~5-10 MB per origin. <br>
           Local Storage for long-term storage like user preferences or settings. Session Storage for temporary data, like form inputs, specific to a session.  
           </p>
-          <li class="my-4 text-red-600 font-semibold"></li>
-            <span class="text-xl bg-orange-200 px-3 py-1 text-black rounded">Question 1:</span> What is event loop? 
+          <li class="my-4 text-red-600 font-semibold">
+            <span class="text-xl bg-orange-200 px-3 py-1 text-black rounded">Question 3:</span> What is event loop? 
           </li>
           <p>JavaScript runs on a single thread, meaning it can only do one thing at a time. The event loop allows JavaScript to perform non-blocking, asynchronous operations despite this limitation. It is responsible for coordinating the execution of synchronous and asynchronous code, ensuring JavaScript remains responsive by efficiently managing tasks and callbacks.</p>
         </ul>
         <!-- Questions end -->
+
+        <!-- Explainations start -->
+        <h1 class="mt-10 text-2xl font-bold text-center">Functions Explainations</h1>
+        <ul class="text-lg my-10">
+            <li class="my-4 text-red-600 font-semibold">
+              <span class="text-xl bg-orange-200 px-3 py-1 text-black rounded">Function 1:</span> Explain the quizTimer() function in the noChange.js file. 
+            </li>
+            <p>The quizTimer function handles the creation and control of a timer, which updates an HTML element with a countdown every second. Let's break down what each part of the function does: <br><br>
+                
+                The function takes a single parameter, dismiss, which is a flag that determines whether the timer should be stopped or started.
+                If dismiss is true, the timer is stopped by calling clearInterval(timer), which cancels the interval set by setInterval. The function then returns immediately. <br>
+                
+                If dismiss is false or not provided, the timer is started using setInterval. This sets up a function to be called every 1000 milliseconds (1 second). <br>
+                let countHtml = document.querySelector("#count");
+                Finds the HTML element with the ID count to update its content with the current timer value. <br>
+                
+                Math.floor(count / 60): Calculates the number of full minutes (covtMin).
+                count % 60: Calculates the remaining seconds (mod).
+                min and countSec are formatted to ensure two digits (e.g., "01" instead of "1"). <br>
+                
+                Updates the inner HTML of the selected element (countHtml) with the formatted minutes and seconds, followed by a "sec" subscript. <br>
+                
+                count++ increments the count variable by 1 after each second. <br>
+
+                If count is even (count % 2 === 0), the text color is switched to text-red-700.
+                If count is odd, the text color is switched to text-red-300.
+                This causes the text color to alternate every second, creating a flashing effect.    
+            </p>
+            <li class="my-4 text-red-600 font-semibold">
+              <span class="text-xl bg-orange-200 px-3 py-1 text-black rounded">Function 2:</span> Explain the chooseQuiz() fucntion in the noChange.js file. 
+            </li>
+            <p>The chooseQuiz function is designed to handle the selection or answering of a quiz question by the user. It updates the user's answers and displays them accordingly. Let's break down the function's logic: <br><br>
+            index Represents the index of the quiz question in the quizData array. <br>
+            givenAns Represents the answer chosen or provided by the user. <br>
+            const isExist = answers.find((ans) => ans.id === quizData[index].id); <br>
+            This line searches the answers array to check if an answer for the current quiz question (identified by quizData[index].id) already exists. If it finds a matching answer, it stores that object in the isExist variable. <br>
+            If isExist is truthy (meaning an answer for the current quiz already exists in answers): <br>
+            A for loop iterates over the answers array to find the specific answer that matches the quiz question. <br>
+            answers.splice(serial, 1, { ...quizData[index], givenAns });: <br>
+            The splice method replaces the existing answer object at the found index (serial) with a new object, spreading the properties from quizData[index] and updating the givenAns field with the user's new answer. <br>
+            If isExist is falsy (meaning no answer exists for the current quiz question in answers): <br>
+            answers.push({ ...quizData[index], givenAns }); <br>
+            Adds a new object to the answers array containing the current quiz data (quizData[index]) and the user's provided answer (givenAns). <br>
+            displayAnswers(answers); <br>
+            This function call (presumably defined elsewhere in your code) updates the UI to display the current state of the answers array, reflecting any changes made by the user's selection.                      
+            </p>
+        </ul> 
+        <!-- Explainations end -->
       </div>
     </section>
     <!-- Landing page content end -->
